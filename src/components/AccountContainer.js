@@ -19,12 +19,16 @@ class AccountContainer extends Component {
     this.setState({search: e.target.value})
   }
 
+  addNewTransaction = (transaction) => 
+    this.setState({transactions: [this.state.transactions, transaction]})
+
   render() {
+    console.log(this.state.transactions)
     const searchTransactions = this.state.transactions.filter(t => t.description.toLowerCase().includes(this.state.search.toLowerCase()))  ///to lower case 
     return (
       <div>
         <Search handleSearch = {this.handleSearch} />
-        <AddTransactionForm />
+        <AddTransactionForm addNewTransaction = {this.addNewTransaction}/>
         <TransactionsList transactions = {searchTransactions} />
       </div>
     );
