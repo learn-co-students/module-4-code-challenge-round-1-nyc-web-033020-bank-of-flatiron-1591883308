@@ -83,6 +83,27 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-06-23",
+      "description": "Pizza ",
+      "category": "Food",
+      "amount": "12",
+      "id": 13
+    },
+    {
+      "date": "2020-07-01",
+      "description": "UbranOutfitters CLothing",
+      "category": "dress ",
+      "amount": "44",
+      "id": 14
+    },
+    {
+      "date": "2020-06-23",
+      "description": "UbranOutfitters CLothing",
+      "category": "Food",
+      "amount": "8888",
+      "id": 15
     }
   ]
 }

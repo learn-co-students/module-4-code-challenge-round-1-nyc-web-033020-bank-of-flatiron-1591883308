@@ -1,7 +1,6 @@
 import React from "react";
 
 const Transaction = (props) => {
-  console.log(props)
   return (
     <tr>
       <td>{props.date}</td>
