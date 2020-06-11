@@ -22,7 +22,11 @@ const TransactionsList = (props) => {
           </th>
         </tr>
         {transArr.map((t) => (
-          <Transaction key={t.id} transaction={t} />
+          <Transaction
+            key={t.id}
+            transaction={t}
+            deleteTransaction={props.deleteTransaction}
+          />
         ))}
       </tbody>
     </table>

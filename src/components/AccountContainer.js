@@ -57,6 +57,15 @@ class AccountContainer extends Component {
     this.setState({ sort: value, transactions: transArr });
   };
 
+  deleteTransaction = (transaction) => {
+    let transArr = [...this.state.transactions];
+    transArr = transArr.filter((t) => t !== transaction);
+    this.setState({ transactions: transArr });
+    fetch(baseUrl + `/transactions/${transaction.id}`, {
+      method: "DELETE",
+    });
+  };
+
   render() {
     // console.log("transactions: ", this.state.transactions);
     return (
@@ -65,6 +74,7 @@ class AccountContainer extends Component {
         <Sort sort={this.state.sort} handleSort={this.handleSort} />
         <AddTransactionForm handleSubmit={this.handleSubmit} />
         <TransactionsList
+          deleteTransaction={this.deleteTransaction}
           transactions={this.state.transactions.filter((t) =>
             t.description.includes(this.state.search)
           )}
