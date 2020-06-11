@@ -8,7 +8,8 @@ const API = 'http://localhost:6001/transactions'
 class AccountContainer extends Component {
 
   state = {
-    txns: []
+    txns: [],
+    search: '',
   }
 
   componentDidMount() {
@@ -31,12 +32,20 @@ class AccountContainer extends Component {
       })
   }
 
+  handleSearchChange = (event) => {
+    this.setState({search: event.target.value})
+  }
+
+  filterTransactions = () => {
+    return [...this.state.txns].filter(txn => txn.description.toLowerCase().includes(this.state.search.toLowerCase()))
+  }
+
   render() {
     return (
       <div>
-        <Search />
+        <Search searchValue={this.state.search} handleChange={this.handleSearchChange} />
         <AddTransactionForm submitForm={this.submitForm}/>
-        <TransactionsList txns={this.state.txns}/>
+        <TransactionsList txns={this.filterTransactions()}/>
       </div>
     );
   }
