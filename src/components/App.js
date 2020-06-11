@@ -10,7 +10,8 @@ class App extends Component {
       description:'',
       category:'',
       amount:0
-    }
+    },
+    searchBar:''
   }
 
   url = 'http://localhost:6001/transactions'
@@ -24,13 +25,40 @@ class App extends Component {
     this.setState({newTransaction: {[event.target.name]: event.target.value}})
   }
 
+  handleSubmit=(event)=>{
+    event.persist()
+    event.preventDefault()
+    fetch(this.url, {
+      method: 'POST',
+      headers: {'content-type':'application/json',
+    'accept':'application/json'},
+    body: JSON.stringify({date: this.state.newTransaction.date,
+      description: this.state.newTransaction.description,
+      category: this.state.newTrnsaction.category,
+      amount: this.state.newTransaction.amount
+    })
+    })
+    fetch(this.url)
+    .then(r=>r.json())
+    .then(transData => this.setState({transactions: transData}))
+  }
+
+  handleSearch=(event)=>{
+    this.setState({searchBar: event.target.value})
+    console.log(event.target.value)
+    console.log(this.state.searchBar)
+  }
+  filteredTransactions=()=>{
+    return (this.state.transactions.filter(transaction=>transaction.includes(this.state.searchBar)))
+  }
+
   render() {
     return (
       <div className="ui raised segment">
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
-        <AccountContainer transactions={this.state.transactions} handleChange={this.handleChange}/>
+        <AccountContainer transactions={this.filteredTransactions()} handleChange={this.handleChange} handleSearch={this.handleSearch} searchBar={this.state.searchBar}/>
       </div>
     );
   }
