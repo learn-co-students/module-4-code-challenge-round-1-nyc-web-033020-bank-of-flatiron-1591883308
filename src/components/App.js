@@ -5,7 +5,12 @@ import "../stylesheets/App.css";
 class App extends Component {
   state={
     transactions:[],
-    newTransaction:{}
+    newTransaction:{
+      date:'',
+      description:'',
+      category:'',
+      amount:''
+    }
   }
 
   url = 'http://localhost:6001/transactions'
@@ -15,6 +20,9 @@ class App extends Component {
     .then(transData => this.setState({transactions: transData}))
   };
 
+  handledateChange=(event)=>{
+    console.log(event.target.value)
+  }
   render() {
 
     return (
@@ -22,7 +30,7 @@ class App extends Component {
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
-        <AccountContainer transactions={this.state.transactions}/>
+        <AccountContainer transactions={this.state.transactions} handleChange={this.handleChange}/>
       </div>
     );
   }

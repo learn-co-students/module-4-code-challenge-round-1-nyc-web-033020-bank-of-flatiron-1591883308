@@ -4,8 +4,8 @@ class AddTransactionForm extends Component {
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
-          <div className="inline fields">
+        <form className="ui form" >
+          <div className="inline fields" onChange={this.props.handleChange}>
             <input type="date" name="date" />
             <input type="text" name="description" placeholder="Description" />
             <input type="text" name="category" placeholder="Category" />

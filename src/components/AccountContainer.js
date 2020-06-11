@@ -5,12 +5,11 @@ import AddTransactionForm from "./AddTransactionForm";
 
 class AccountContainer extends Component {
   render() {
-    console.log(this.props)
     return (
       <div>
         <Search />
-        <AddTransactionForm />
-        <TransactionsList transactions={this.props.transactions}/>
+        <AddTransactionForm handleChange={this.props.handleChange} />
+        <TransactionsList transactions={this.props.transactions} />
       </div>
     );
   }
