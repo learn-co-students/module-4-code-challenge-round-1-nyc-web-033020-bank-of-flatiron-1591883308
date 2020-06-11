@@ -28,6 +28,7 @@ class App extends Component {
   handleSubmit=(event)=>{
     event.persist()
     event.preventDefault()
+    console.log(this.state.newTransaction)
     fetch(this.url, {
       method: 'POST',
       headers: {'content-type':'application/json',
@@ -45,11 +46,9 @@ class App extends Component {
 
   handleSearch=(event)=>{
     this.setState({searchBar: event.target.value})
-    console.log(event.target.value)
-    console.log(this.state.searchBar)
   }
   filteredTransactions=()=>{
-    return (this.state.transactions.filter(transaction=>transaction.includes(this.state.searchBar)))
+    return (this.state.transactions.filter(transaction=>transaction.description.includes(this.state.searchBar)))
   }
 
   render() {
@@ -58,7 +57,7 @@ class App extends Component {
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
-        <AccountContainer transactions={this.filteredTransactions()} handleChange={this.handleChange} handleSearch={this.handleSearch} searchBar={this.state.searchBar}/>
+        <AccountContainer transactions={this.filteredTransactions()} handleChange={this.handleChange} handleSearch={this.handleSearch} searchBar={this.state.searchBar} handleSubmit={this.handleSubmit}/>
       </div>
     );
   }
