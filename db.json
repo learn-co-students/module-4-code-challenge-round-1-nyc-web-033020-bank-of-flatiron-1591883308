@@ -57,13 +57,6 @@
       "amount": -13.25
     },
     {
-      "id": 9,
-      "date": "2019-12-11",
-      "description": "Paycheck from Bob's Burgers",
-      "category": "Income",
-      "amount": 1000
-    },
-    {
       "id": 10,
       "date": "2019-12-16",
       "description": "Tickets, Flatiron Multiplex Cinemas",
@@ -90,6 +83,20 @@
       "category": "Food",
       "amount": "12",
       "id": 13
+    },
+    {
+      "date": "2020-07-14",
+      "description": "Beach Day",
+      "category": "enjoying life",
+      "amount": "-50",
+      "id": 14
+    },
+    {
+      "date": "2020-06-28",
+      "description": "Sold Dress",
+      "category": "Arts and Crafts",
+      "amount": "250",
+      "id": 15
     }
   ]
 }

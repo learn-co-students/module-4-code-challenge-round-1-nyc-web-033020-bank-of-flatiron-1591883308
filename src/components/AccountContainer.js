@@ -61,7 +61,7 @@ class AccountContainer extends Component {
       'content-type': 'application/json',
        accept: 'application/json'
      }
-   }).then(res => res.json()).then(didDelete => console.log(didDelete))
+   })
   }
 
   handleButton = (event) => {
@@ -70,6 +70,8 @@ class AccountContainer extends Component {
       newArray = this.state.transations.sort((a,b)=> a.category > b.category ? 1 : -1 )
     } else if (event.target.name === 'description'){
       newArray = this.state.transations.sort((a,b)=> a.description > b.description ? 1 : -1 )
+    } else if (event.target.name === 'amount'){
+      newArray = this.state.transations.sort((a,b)=> a.amount < b.amount ? 1 : -1 )
     }
     this.setState({ transations: newArray })
   }
