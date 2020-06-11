@@ -10,13 +10,18 @@ class AccountContainer extends Component {
     date: '',
     description:'',
     category:'',
-    amount:''
+    amount:'',
+    search:''
   }
 
   componentDidMount(){
     fetch('http://localhost:6001/transactions')
     .then(res => res.json())
     .then(data => this.setState({transactions: data }))
+  }
+
+  searchTransaction = (event) => {
+    this.setState({search: event.target.value})
   }
 
   createTransaction = (event) => {
@@ -59,9 +64,10 @@ class AccountContainer extends Component {
   
   
   render() {
+    const filteredTransactions = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.search))
     return (
       <div>
-        <Search />
+        <Search search={this.state.search} searchTransaction={this.searchTransaction}/>
         <AddTransactionForm 
         submitTransaction={this.submitTransaction}
         createTransaction={this.createTransaction}
@@ -70,7 +76,7 @@ class AccountContainer extends Component {
         category={this.state.category}
         amount={this.state.amount}
         />
-        <TransactionsList transactions={this.state.transactions}/>
+        <TransactionsList transactions={filteredTransactions}/>
       </div>
     );
   }
