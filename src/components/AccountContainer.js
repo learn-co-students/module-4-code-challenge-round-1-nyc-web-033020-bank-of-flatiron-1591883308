@@ -48,10 +48,35 @@ class AccountContainer extends Component {
       })
     })
 
+    //cleaning up the form
     e.target.date.value = ''
     e.target.description.value = ''
     e.target.category.value = ''
     e.target.amount.value = ''
+  }
+
+  handlerDeleteTransaction = (transaction) => {
+    fetch(`http://localhost:6001/transactions/${transaction.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(this.setState({
+      allTransactions: this.state.allTransactions.filter(transac => transac.id !== transaction.id)
+    }))
+  }
+
+  handlerSort = (e) => {
+    if(e.target.value === "by category"){
+      this.setState({
+        allTransactions: this.state.allTransactions.sort((a,b) => a.category.localeCompare(b.category))
+      })
+    } else{
+      this.setState({
+        allTransactions: this.state.allTransactions.sort((a,b) => a.description.localeCompare(b.description))
+      })
+    }
   }
 
   render() {
@@ -61,8 +86,10 @@ class AccountContainer extends Component {
     return (
       <div>
         <Search handlerSearch={this.handlerSearch}/>
-        <AddTransactionForm handlerAddNewTransaction={this.handlerAddNewTransaction}/>
-        <TransactionsList allTransactions={searchedTransactions}/>
+        <AddTransactionForm handlerAddNewTransaction={this.handlerAddNewTransaction}
+          handlerSort={this.handlerSort}/>
+        <TransactionsList allTransactions={searchedTransactions} 
+          handlerDeleteTransaction={this.handlerDeleteTransaction}/>
       </div>
     );
   }

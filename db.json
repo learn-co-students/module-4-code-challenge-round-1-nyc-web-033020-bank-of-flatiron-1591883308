@@ -85,18 +85,11 @@
       "amount": -975
     },
     {
-      "date": "2020-06-12",
-      "description": "chipotle",
-      "category": "food",
-      "amount": "2000",
+      "date": "2020-06-20",
+      "description": "Mustang twister Orange",
+      "category": "Car",
+      "amount": "27000",
       "id": 13
-    },
-    {
-      "date": "2020-06-18",
-      "description": "Qdoba",
-      "category": "food",
-      "amount": "30",
-      "id": 14
     }
   ]
 }

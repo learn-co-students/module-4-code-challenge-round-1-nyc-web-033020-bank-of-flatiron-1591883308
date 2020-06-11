@@ -18,6 +18,11 @@ class AddTransactionForm extends Component {
           </div>
           <button className="ui button" type="submit">Add Transaction</button>
         </form>
+          <div>
+            <strong>Sort transactions alphabetically: </strong>
+            <button className="ui button" value="by category" onClick={this.props.handlerSort}>by category</button>
+            <button className="ui button" value="by description" onClick={this.props.handlerSort}>by description</button>
+          </div>
       </div>
     );
   }
