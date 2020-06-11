@@ -38,7 +38,9 @@ class AccountContainer extends Component {
 
   deleteTransaction = (id) => {
     let updatedTransactions = [...this.state.transactions]
-    this.setState({transaction: updatedTransactions.filter(transaction => transaction.id !== id)})
+    let newTransactions = updatedTransactions.filter(transaction => transaction.id !== id)
+    console.log(newTransactions)
+    this.setState({transaction: newTransactions}) /*why isnt this working, back end is correct */
     console.log('deleting..')
     fetch(`http://localhost:6001/transactions/${id}`, {
       method: "DELETE"
