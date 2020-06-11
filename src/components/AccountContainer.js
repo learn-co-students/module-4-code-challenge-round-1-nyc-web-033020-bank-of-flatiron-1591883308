@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
+import Sort from './Sort';
 import AddTransactionForm from "./AddTransactionForm";
 
 const API = 'http://localhost:6001/transactions'
@@ -10,6 +11,7 @@ class AccountContainer extends Component {
   state = {
     txns: [],
     search: '',
+    sort: '',
   }
 
   componentDidMount() {
@@ -36,8 +38,26 @@ class AccountContainer extends Component {
     this.setState({search: event.target.value})
   }
 
-  filterTransactions = () => {
-    return [...this.state.txns].filter(txn => txn.description.toLowerCase().includes(this.state.search.toLowerCase()))
+  submitSort = (s) => {
+    this.setState({sort: s})
+  }
+
+  renderTransactions = () => {
+    let txns = [...this.state.txns]
+    txns = this.filterTransactions(txns)
+    txns = this.sortTransactions(txns)
+    return txns
+  }
+
+  filterTransactions = (txns) => {
+    return txns.filter(txn => txn.description.toLowerCase().includes(this.state.search.toLowerCase()))
+  }
+
+  sortTransactions = (txns) => {
+    if (this.state.sort) {
+      return txns.sort((a,b) => a[this.state.sort].localeCompare(b[this.state.sort]))
+    }
+    return txns
   }
 
   render() {
@@ -45,7 +65,8 @@ class AccountContainer extends Component {
       <div>
         <Search searchValue={this.state.search} handleChange={this.handleSearchChange} />
         <AddTransactionForm submitForm={this.submitForm}/>
-        <TransactionsList txns={this.filterTransactions()}/>
+        <Sort submitSort={this.submitSort}/>
+        <TransactionsList txns={this.renderTransactions()}/>
       </div>
     );
   }
