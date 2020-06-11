@@ -15,6 +15,8 @@ class AccountContainer extends Component {
     }
   }
 
+  // date: 'yyyy-MM-dd'
+
   componentDidMount() {
     fetch('http://localhost:6001/transactions')
     .then(res => res.json())
@@ -35,12 +37,37 @@ class AccountContainer extends Component {
     })
   }
 
+  handleSubmit = () => {
+    fetch('http://localhost:6001/transactions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({...this.state.transForm})
+    })
+      .then(res => res.json())
+      .then(newTrans => 
+        this.setState({
+          transForm: newTrans
+        }))
+  }
+
+  // handleChangeDate = event => {
+  //   this.setState({
+  //     transForm: {
+  //       ...this.state.transForm, date: event.target.value
+  //     }
+  //   })
+  // }
+
   render() {
 
+    // console.log(this.state)
     return (
       <div>
         <Search />
-        <AddTransactionForm onChange={this.onChange} />
+        <AddTransactionForm transForm={this.state.transForm} onChange={this.onChange} handleSubmit={this.handleSubmit} />
         <TransactionsList transactions={this.state.transactions} />
       </div>
     );
