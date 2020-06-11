@@ -8,7 +8,8 @@ const API = 'http://localhost:6001/transactions';
 class AccountContainer extends Component {
   
   state = {
-	transactions: []
+	transactions: [],
+	filter: ''
   };
 
   fetchTransactions = () => {
@@ -22,6 +23,8 @@ class AccountContainer extends Component {
   };
 
   recordNewTransaction = data => {
+  	// Called with a hash representing a new transaction
+  	// Renders pesimistically, e.g., POST then refetch
 	fetch(API, {
 		method: "POST",
 		headers: {
@@ -29,19 +32,36 @@ class AccountContainer extends Component {
 			"Accept": "application/json"
 		},
 		body: JSON.stringify(data)
+	}).then( this.fetchTransactions )
+  }
+
+  // This is what will actually be passed to the transactions list for rendering
+  filteredTransactions = () => {
+  	const { transactions, filter } = this.state
+
+	return transactions.filter(transaction => {
+		return transaction.description.toLowerCase().includes(filter.toLowerCase()) ||
+			transaction.category.toLowerCase().includes(filter.toLowerCase())
 	})
-	  .then( this.fetchTransactions )
+  }
+  
+  // Will take an onChange event and set state's filter to the value of that field
+  handleSearch = e => {
+	const filter = e.target.value;
+	this.setState({ filter })
   }
 
 
   render() {
     return (
       <div>
-        <Search />
+        <Search 
+			filter={this.state.filter}
+			handleSearch={this.handleSearch} />
         <AddTransactionForm 
-		  newTransaction={this.recordNewTransaction}/>
+		  newTransaction={this.recordNewTransaction} />
         <TransactionsList 
-          transactions={this.state.transactions} />
+          transactions={this.filteredTransactions()} />
       </div>
     );
   }
