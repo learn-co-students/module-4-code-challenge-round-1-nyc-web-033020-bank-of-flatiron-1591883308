@@ -8,6 +8,7 @@ const Transaction = (props) => {
       <td>{description}</td>
       <td>{category}</td>
       <td>{amount}</td>
+      <td><button className="ui button" onClick={ () => props.handleDeleteButton(props.id)}>Delete</button></td>
     </tr>
   );
 };

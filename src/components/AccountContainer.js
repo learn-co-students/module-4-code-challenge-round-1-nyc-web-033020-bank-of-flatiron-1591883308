@@ -70,6 +70,24 @@ class AccountContainer extends Component {
     }
   }
 
+  handleDeleteButton = (transactId) =>{
+    console.log(transactId)
+    fetch(`${API}/${transactId}`,{
+      method: "DELETE",
+      headers: {"Content-Type": "application/json",
+                Accept: "application/json"
+    }
+    })
+    .then(resp => resp.json())
+    .then(delTr => {
+      console.log(delTr)
+      this.setState(prevState =>({
+        transactions: [...prevState.transactions.filter(transaction => transaction.id !== transactId)]
+      })
+      )
+    })
+  }
+
   // Alternative search pattern I considered where form must be submitted. Decided the state based render looked cooler.
   // handleSearchSubmit = () =>{
   //   this.state.transactions.filter(transaction => transaction.includes(this.state.searchTerm))
@@ -103,6 +121,7 @@ class AccountContainer extends Component {
         transactions={filteredTransactions}
         sortView={this.state.sortView}
         handleSortButton={this.handleSortButton}
+        handleDeleteButton={this.handleDeleteButton}
         />
       </div>
     );
