@@ -13,7 +13,8 @@ class AccountContainer extends Component {
     date: '',
     description: '',
     category: '',
-    amount: 0
+    amount: 0,
+    sortView: 'date'
   }
 
   componentDidMount(){
@@ -49,6 +50,26 @@ class AccountContainer extends Component {
     })))
   }
 
+  // Advanced Deliverables
+  handleSortButton = () =>{
+    switch(this.state.sortView){
+      case 'date':
+        this.setState({sortView:'description'})
+        console.log(this.state.sortView)
+        break;
+      case 'description':
+        this.setState({sortView:'category'})
+        console.log(this.state.sortView)
+        break;
+      case 'category':
+        this.setState({sortView:'date'})
+        console.log(this.state.sortView)
+        break;
+      default:
+        this.setState({sortView:'date'})
+    }
+  }
+
   // Alternative search pattern I considered where form must be submitted. Decided the state based render looked cooler.
   // handleSearchSubmit = () =>{
   //   this.state.transactions.filter(transaction => transaction.includes(this.state.searchTerm))
@@ -57,6 +78,15 @@ class AccountContainer extends Component {
   render() {
     const filteredTransactions = this.state.transactions.filter(
       transaction => transaction.description.includes(this.state.searchTerm))
+
+      if(this.state.sortView==="description"){
+        filteredTransactions.sort((a,b) => (a.description > b.description) ? 1 : -1)
+      } else if(this.state.sortView==="category"){
+        filteredTransactions.sort((a,b) => (a.category > b.category) ? 1 : -1)
+      } else if(this.state.sortView==="date"){
+        filteredTransactions.sort((a,b) => (a.date> b.date) ? -1 : 1)
+      }
+
     return (
       
       <div>
@@ -69,7 +99,11 @@ class AccountContainer extends Component {
         addTransaction={this.submitTransaction} 
         handleChange={this.handleChange}
         newTDate={this.state.newTDate}/>
-        <TransactionsList transactions={filteredTransactions}/>
+        <TransactionsList 
+        transactions={filteredTransactions}
+        sortView={this.state.sortView}
+        handleSortButton={this.handleSortButton}
+        />
       </div>
     );
   }

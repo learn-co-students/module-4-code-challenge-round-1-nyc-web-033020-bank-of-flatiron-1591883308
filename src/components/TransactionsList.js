@@ -3,6 +3,8 @@ import Transaction from "./Transaction";
 
 const TransactionsList = (props) => {
   return (
+    <div>
+  <button className="ui button" onClick={props.handleSortButton}>Sort By: {props.sortView}</button>
     <table className="ui celled striped padded table">
       <tbody>
         <tr>
@@ -22,6 +24,7 @@ const TransactionsList = (props) => {
         {props.transactions.map( transact => <Transaction key ={transact.id} {...transact}/>)}
       </tbody>
     </table>
+    </div>
   );
 };
 
