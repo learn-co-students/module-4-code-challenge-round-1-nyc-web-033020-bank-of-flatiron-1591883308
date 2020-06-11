@@ -90,6 +90,13 @@
       "category": "Post",
       "amount": "-0.04",
       "id": 13
+    },
+    {
+      "date": "2020-06-19",
+      "description": "Done",
+      "category": "Finsihed",
+      "amount": "100",
+      "id": 14
     }
   ]
 }
