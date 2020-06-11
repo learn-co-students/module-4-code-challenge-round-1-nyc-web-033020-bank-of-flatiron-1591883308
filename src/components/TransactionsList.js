@@ -3,12 +3,14 @@ import Transaction from "./Transaction";
 
 const TransactionsList = (props) => {
   console.log(props.transactionList)
+  console.log(props.transactionList)
   return (
     <table className="ui celled striped padded table">
       <tbody>
         <tr>
           <th>
             <h3 className="ui center aligned header">Date</h3>
+            
           </th>
           <th>
             <h3 className="ui center aligned header">Description</h3>

@@ -6,7 +6,13 @@ import TransactionsList from "./TransactionsList";
 class App extends Component {
   //set needed values in state
   state = {
-    transactionList: []
+    transactionList: [],
+    transaction: {
+      date: "",
+      description: "",
+      category: "",
+      amount: 0
+    }
   }
   //invoke fetch 
   componentDidMount(){
@@ -19,7 +25,13 @@ class App extends Component {
     .then(transactionList => this.setState({transactionList}))
   }
   
+  //create a function to map over transactions & populate transaction list
+  populateTransactionList = () => {
+    const currentTransactions = this.state.transactionList
+    currentTransactions.map(trans => {
 
+    })
+  }
 
 
 
