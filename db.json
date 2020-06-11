@@ -36,13 +36,6 @@
       "amount": 8.75
     },
     {
-      "id": 6,
-      "date": "2019-12-06",
-      "description": "Chipotle",
-      "category": "Food",
-      "amount": -17.59
-    },
-    {
       "id": 7,
       "date": "2019-12-07",
       "description": "Birthday Check from Grandma",
@@ -83,20 +76,6 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
-    },
-    {
-      "date": "2020-06-26",
-      "description": "Watched Inception",
-      "category": "Entertainment",
-      "amount": "32",
-      "id": 13
-    },
-    {
-      "date": "2020-06-22",
-      "description": "Watched Inception",
-      "category": "Entertainment",
-      "amount": "32",
-      "id": 14
     },
     {
       "date": "2020-07-27",

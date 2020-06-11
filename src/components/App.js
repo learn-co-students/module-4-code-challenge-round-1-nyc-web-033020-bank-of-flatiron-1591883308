@@ -44,12 +44,20 @@ class App extends Component {
     })
   }
 
-  // searchFilter = (searchCategory) => { 
-  //   let transactionsFilter = this.state.transactions.filter(transaction => transaction.category.toLowerCase().includes(searchCategory.toLowerCase()))
-  //   this.setState({
-  //     transactions: transactionsFilter
-  //   })
-  // }
+  handleDelete = (id) => {
+    const updatedTransactions = this.state.transactions.filter(transaction => transaction.id !== id)
+    console.log(updatedTransactions)
+    this.setState({
+      transactions: updatedTransactions
+    })
+    fetch(`${BASE_API}/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json', 
+        'Content-Type': 'application/json'
+      }
+    })
+  }
 
   render() {
     console.log(this.state)
@@ -64,6 +72,7 @@ class App extends Component {
         <AccountContainer transactions={transactionsFilter} 
         handleSubmit={this.handleSubmit} 
         handleSearch={this.handleSearch}
+        handleDelete={this.handleDelete}
         />
       </div>
     );

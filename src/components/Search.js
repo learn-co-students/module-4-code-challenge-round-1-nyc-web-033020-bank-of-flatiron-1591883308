@@ -1,17 +1,6 @@
 import React from "react";
 
 class Search extends React.Component {
-  // state = { 
-  //   searchTerm: ''
-  // }
-
-  // handleSearch = (e) => {
-  //   this.setState({
-  //     searchTerm: e.target.value
-  //   })
-  // }
-
-
 
   render() {
     const { handleSearch } = this.props

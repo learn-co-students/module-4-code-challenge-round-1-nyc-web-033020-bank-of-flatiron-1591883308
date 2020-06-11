@@ -2,13 +2,15 @@ import React from "react";
 
 const Transaction = (props) => {
   // console.log(props)
-  const { id, date, description, category, amount} = props
+  const { id, date, description, category, amount, handleDelete} = props
   return (
     <tr>
       <td>{date}</td>
       <td>{description}</td>
       <td>{category}</td>
       <td>{amount}</td>
+      <td><input type='button' 
+      value='Del' onClick={() => handleDelete(id)}/></td>
     </tr>
   );
 };
