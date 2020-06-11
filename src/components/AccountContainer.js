@@ -22,7 +22,7 @@ class AccountContainer extends Component {
     .then(dbTransact => this.setState({transactions:dbTransact}))
   }
 
-  handleTransactionForm = (e) =>{
+  handleChange = (e) =>{
     this.setState({
       [e.target.name]: e.target.value
     }, ()=>console.log(this.state))
@@ -49,15 +49,27 @@ class AccountContainer extends Component {
     })))
   }
 
+  // Alternative search pattern I considered where form must be submitted. Decided the state based render looked cooler.
+  // handleSearchSubmit = () =>{
+  //   this.state.transactions.filter(transaction => transaction.includes(this.state.searchTerm))
+  // }
+
   render() {
+    const filteredTransactions = this.state.transactions.filter(
+      transaction => transaction.description.includes(this.state.searchTerm))
     return (
+      
       <div>
-        <Search />
+        <Search 
+        searchTerm ={this.state.searchTerm} 
+        handleChange={this.handleChange}
+        handleSearchSubmit={this.handleSearchSubmit}
+        />
         <AddTransactionForm 
         addTransaction={this.submitTransaction} 
-        handleTransactionForm={this.handleTransactionForm}
+        handleChange={this.handleChange}
         newTDate={this.state.newTDate}/>
-        <TransactionsList transactions={this.state.transactions}/>
+        <TransactionsList transactions={filteredTransactions}/>
       </div>
     );
   }
