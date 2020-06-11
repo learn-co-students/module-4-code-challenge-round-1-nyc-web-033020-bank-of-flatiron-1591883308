@@ -9,6 +9,7 @@ class AccountContainer extends Component {
 
   state = {
     transactions: []
+    search: ''
   } 
 
   componentDidMount(){
@@ -17,15 +18,21 @@ class AccountContainer extends Component {
       .then(transactions => this.setState ({ transactions }))
   };
 
+  addTransaction = (transObj) => {
+    const newArray = [...this.state.transactions]
+    newArray.push(transObj)
+    this.setState({ transactions: newArray })
+  };
+
   render() {
     // console.log(this.state.transactions)
 
-    const { transactions } = this.state 
+    const { transactions, search } = this.state 
 
     return (
       <div>
-        <Search />
-        <AddTransactionForm />
+        <Search search={search}/>
+        <AddTransactionForm addTransaction={this.addTransaction}/>
         <TransactionsList transactions={transactions}/>
       </div>
     );
