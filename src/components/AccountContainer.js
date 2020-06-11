@@ -36,6 +36,17 @@ class AccountContainer extends Component {
     }
   }
 
+  deleteTransaction = (id) => {
+    let updatedTransactions = [...this.state.transactions]
+    this.setState({transaction: updatedTransactions.filter(transaction => transaction.id !== id)})
+    console.log('deleting..')
+    fetch(`http://localhost:6001/transactions/${id}`, {
+      method: "DELETE"
+    })
+   
+
+  }
+
   submitTransaction = (event) => {
     event.preventDefault()
     console.log('submitting...')
@@ -57,6 +68,10 @@ class AccountContainer extends Component {
   
   .then(res => res.json())
   .then(data => this.setState({transactions: [...this.state.transactions, data]}))
+  this.setState({date: '',
+  description:'',
+  category:'',
+  amount:''})
 
     
 }
@@ -76,7 +91,7 @@ class AccountContainer extends Component {
         category={this.state.category}
         amount={this.state.amount}
         />
-        <TransactionsList transactions={filteredTransactions}/>
+        <TransactionsList transactions={filteredTransactions} deleteTransaction={this.deleteTransaction}/>
       </div>
     );
   }

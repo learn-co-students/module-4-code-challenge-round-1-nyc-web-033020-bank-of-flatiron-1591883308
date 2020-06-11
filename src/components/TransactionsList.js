@@ -21,6 +21,7 @@ const TransactionsList = (props) => {
         </tr>
         {props.transactions.map(transaction => 
         <Transaction 
+        deleteTransaction={props.deleteTransaction}
         key={Transaction.id}
         {...transaction}
         />)}
