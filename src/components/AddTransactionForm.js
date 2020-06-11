@@ -38,6 +38,12 @@ class AddTransactionForm extends Component {
  	this.props.newTransaction(transactionData)
   }
 
+  // Handle sort will take the sort type (date, desription, category, amount) and sort the state.transactions array apporpriately
+  handleSort = column => {
+	const sorted = this.state.description.sort((a,b) => (a.amount - b.amount))	
+	console.log(sorted)
+  }
+
   render() {
     return (
       <div className="ui segment">

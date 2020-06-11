@@ -62,6 +62,7 @@ class AccountContainer extends Component {
 		  newTransaction={this.recordNewTransaction} />
         <TransactionsList 
           transactions={this.filteredTransactions()} />
+          sort={this.handleSort}
       </div>
     );
   }
