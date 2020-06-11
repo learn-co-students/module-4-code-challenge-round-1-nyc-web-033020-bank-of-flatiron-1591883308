@@ -1,28 +1,27 @@
 import React from "react";
 
 class Search extends React.Component {
-  state = { 
-    searchTerm: ''
-  }
+  // state = { 
+  //   searchTerm: ''
+  // }
 
-  handleSearch = (e) => {
-    this.setState({
-      searchTerm: e.target.value
-    })
-    this.props.searchFilter(this.state.searchTerm)
-  }
+  // handleSearch = (e) => {
+  //   this.setState({
+  //     searchTerm: e.target.value
+  //   })
+  // }
 
 
 
   render() {
-    const { searchFilter } = this.props
-    console.log(this.state)
+    const { handleSearch } = this.props
+    // console.log(this.state)
     return (
       <div className="ui large fluid icon input">
         <input
           type="text"
           placeholder={"Search your Recent Transactions"}
-          onChange={this.handleSearch}
+          onChange={handleSearch}
         />
         <i className="circular search link icon"></i>
       </div>
