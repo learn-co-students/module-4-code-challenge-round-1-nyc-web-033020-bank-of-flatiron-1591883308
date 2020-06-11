@@ -6,13 +6,21 @@ import AddTransactionForm from "./AddTransactionForm";
 class AccountContainer extends Component {
   
   state = {
-    transactions: []
+    transactions: [],
+    date: '',
+    description:'',
+    category:'',
+    amount:''
   }
 
   componentDidMount(){
     fetch('http://localhost:6001/transactions')
     .then(res => res.json())
     .then(data => this.setState({transactions: data }))
+  }
+
+  createTransaction = () => {
+
   }
   
   
@@ -21,7 +29,13 @@ class AccountContainer extends Component {
     return (
       <div>
         <Search />
-        <AddTransactionForm />
+        <AddTransactionForm 
+        createTransaction={this.createTransaction}
+        date={this.state.date}
+        description={this.state.description}
+        category={this.state.category}
+        amount={this.state.amount}
+        />
         <TransactionsList transactions={this.state.transactions}/>
       </div>
     );
