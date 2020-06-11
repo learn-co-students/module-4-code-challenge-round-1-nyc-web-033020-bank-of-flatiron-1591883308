@@ -25,24 +25,63 @@ class AccountContainer extends Component {
     )
   }
 
-  onChange = event => {
-    const target = event.target
-    const value = target.value
-    const name = target.name
+  // onChange = event => {
+  //   const target = event.target
+  //   const value = target.value
+  //   const name = target.name
 
-    this.setState({
-      transForm: {
-        ...this.state.transForm, [name]:value
-      }
+  //   this.setState({
+  //     transForm: {
+  //       ...this.state.transForm, [name]:value
+  //     }
+  //   })
+  // }
+
+  handleDate = event => {
+    const date = event.target.value 
+    this.setState((prevState) => {
+      return {transForm: {
+        ...prevState.transForm, date
+      }}
     })
   }
 
-  handleSubmit = () => {
+  handleDesc = event => {
+    const desc = event.target.value 
+    this.setState((prevState) => {
+      return {transForm: {
+        ...prevState.transForm, desc
+      }}
+    })
+  }
+
+  handleCat = event => {
+    const cat = event.target.value 
+    this.setState((prevState) => {
+      return {transForm: {
+        ...prevState.transForm, cat
+      }}
+    })
+  }
+
+  handleAmount = event => {
+    const amount = event.target.value 
+    this.setState((prevState) => {
+      return {transForm: {
+        ...prevState.transForm, amount
+      }}
+    })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    event.persist()
+
     fetch('http://localhost:6001/transactions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Accept: 'application/json'
+        'Accept': 'application/json'
       },
       body: JSON.stringify({...this.state.transForm})
     })
@@ -63,11 +102,19 @@ class AccountContainer extends Component {
 
   render() {
 
-    // console.log(this.state)
+    console.log(this.state)
     return (
       <div>
         <Search />
-        <AddTransactionForm transForm={this.state.transForm} onChange={this.onChange} handleSubmit={this.handleSubmit} />
+        <AddTransactionForm 
+        transForm={this.state.transForm}
+        // {...this.state.transForm}
+        handleDate={this.handleDate} 
+        handleDesc={this.handleDesc} 
+        handleSubmit={this.handleSubmit}
+        handleCat={this.handleCat} 
+        handleAmount={this.handleAmount}
+        />
         <TransactionsList transactions={this.state.transactions} />
       </div>
     );
@@ -75,3 +122,4 @@ class AccountContainer extends Component {
 }
 
 export default AccountContainer;
+

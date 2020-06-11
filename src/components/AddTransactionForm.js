@@ -5,7 +5,7 @@ class AddTransactionForm extends Component {
 
   render() {
 
-    const { date, description, category, amount, onChange, handleSubmit } = this.props
+    const { date, description, category, amount, onChange, handleSubmit, handleDate, handleDesc, handleCat, handleAmount } = this.props
     // const { transForm, onChange } = this.props
 
 
@@ -13,16 +13,16 @@ class AddTransactionForm extends Component {
       <div className="ui segment">
         <form className="ui form">
           <div className="inline fields">
-            <input type="date"  name="date" onChange={onChange} />
-            <input type="text"  name="description" placeholder="Description" onChange={onChange} />
-            <input type="text"  name="category" placeholder="Category"  onChange={onChange} />
+            <input type="date"  name="date" onChange={handleDate} />
+            <input type="text"  name="description" placeholder="Description" onChange={handleDesc} />
+            <input type="text"  name="category" placeholder="Category"  onChange={handleCat} />
             <input
               type="number"
               // value='amount'
               name="amount"
               placeholder="Amount"
               step="0.01"
-              onChange={onChange}
+              onChange={handleAmount}
             />
           </div>
           <button className="ui button" type="submit" onSubmit={handleSubmit} >
