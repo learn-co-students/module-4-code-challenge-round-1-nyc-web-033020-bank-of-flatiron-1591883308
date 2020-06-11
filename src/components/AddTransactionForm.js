@@ -25,6 +25,16 @@ class AddTransactionForm extends Component {
     }
 
     this.props.addTransaction(transaction)
+    this.resetForm()
+  }
+
+  resetForm = () => {
+    this.setState({
+      date: '',
+      description: '',
+      category: '',
+      amount: ''
+    })
   }
 
   render() {
