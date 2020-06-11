@@ -8,7 +8,7 @@ const TRANS_URL = 'http://localhost:6001/transactions'
 class AccountContainer extends Component {
 
   state = {
-    transactions: []
+    transactions: [],
     search: ''
   } 
 
@@ -18,6 +18,10 @@ class AccountContainer extends Component {
       .then(transactions => this.setState ({ transactions }))
   };
 
+  handleSearch = (inputValue) => {
+    this.setState({search: inputValue})
+  };
+
   addTransaction = (transObj) => {
     const newArray = [...this.state.transactions]
     newArray.push(transObj)
@@ -25,15 +29,20 @@ class AccountContainer extends Component {
   };
 
   render() {
-    // console.log(this.state.transactions)
+    console.log(this.state.search)
 
     const { transactions, search } = this.state 
 
+    const filteredTransactions = transactions.filter(
+      trans => trans.description.toLowerCase()
+        .includes(search.toLowerCase())
+    )
+
     return (
       <div>
-        <Search search={search}/>
+        <Search search={search} handleSearch={this.handleSearch}/>
         <AddTransactionForm addTransaction={this.addTransaction}/>
-        <TransactionsList transactions={transactions}/>
+        <TransactionsList transactions={filteredTransactions}/>
       </div>
     );
   }

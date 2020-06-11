@@ -31,7 +31,7 @@ class AddTransactionForm extends Component {
   render() {
 
     const {date, description, category, amount} = this.state
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className="ui segment">
         <form className="ui form">
