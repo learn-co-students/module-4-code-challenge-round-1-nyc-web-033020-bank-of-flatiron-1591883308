@@ -5,8 +5,7 @@ import "../stylesheets/App.css";
 const BASE_API = 'http://localhost:6001/transactions'
 class App extends Component {
   state = { 
-    transactions: [],
-
+    transactions: []
   }
 
   componentDidMount() {
@@ -36,18 +35,26 @@ class App extends Component {
         transactions: [...this.state.transactions, newTransaction]
       })
     } )
+  }
 
-
+  searchFilter = (searchCategory) => { 
+    let transactionsFilter = this.state.transactions.filter(transaction => transaction.category.toLowerCase() === searchCategory.toLowerCase())
+    this.setState({
+      transactions: transactionsFilter
+    })
   }
 
   render() {
-    // console.log(this.state)
+
     return (
       <div className="ui raised segment">
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
-        <AccountContainer transactions={this.state.transactions} handleSubmit={this.handleSubmit} />
+        <AccountContainer transactions={this.state.transactions} 
+        handleSubmit={this.handleSubmit} 
+        searchFilter={this.searchFilter}
+        />
       </div>
     );
   }

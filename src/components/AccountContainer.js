@@ -9,10 +9,11 @@ class AccountContainer extends Component {
 
 
   render() {
-    const {transactions, handleSubmit} = this.props
+    const {transactions, handleSubmit, searchFilter} = this.props
     return (
       <div>
-        <Search />
+        
+        <Search searchFilter={searchFilter} />
         <AddTransactionForm handleSubmit={handleSubmit} />
         <TransactionsList transactions={transactions}  />
       </div>
