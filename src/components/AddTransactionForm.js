@@ -1,10 +1,22 @@
 import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      date: '',
+      description: '',
+      category: '',
+      amount: ''
+    }
+
+  }
+
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form className="ui form" onSubmit={this.props.handleForm}>
           <div className="inline fields">
             <input type="date" name="date" />
             <input type="text" name="description" placeholder="Description" />
@@ -16,7 +28,7 @@ class AddTransactionForm extends Component {
               step="0.01"
             />
           </div>
-          <button className="ui button" type="submit">
+          <button className="ui button" type="submit" >
             Add Transaction
           </button>
         </form>
