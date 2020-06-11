@@ -103,7 +103,7 @@ class AccountContainer extends Component {
 
   render() {
     const filteredTransactions = this.state.transactions.filter(
-      transaction => transaction.description.includes(this.state.searchTerm))
+      transaction => transaction.description.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
 
       if(this.state.sortView==="description"){
         filteredTransactions.sort((a,b) => (a.description > b.description) ? 1 : -1)
