@@ -26,7 +26,7 @@ class AccountContainer extends Component {
     return (
       <div>
         <Search />
-        <AddTransactionForm />
+        <AddTransactionForm reRender={this.fetchData} />
         <TransactionsList transactions={this.state.transactions}/>
       </div>
     );

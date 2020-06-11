@@ -14,7 +14,23 @@ class AddTransactionForm extends Component {
     })
   }
 
-  // handleSubmit = {}
+  handleSubmit = (event) => {
+    event.preventDefault()
+    event.persist()
+
+    const options = {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    }
+
+    fetch(`http://localhost:6001/transactions`, options)
+    .then(r => r.json())
+    .then(this.props.reRender)
+  }
 
   render() {
     return (
