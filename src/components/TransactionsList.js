@@ -4,7 +4,9 @@ import Transaction from "./Transaction";
 const TransactionsList = (props) => {
   return (
     <div>
-  <button className="ui button" onClick={props.handleSortButton}>Sort By: {props.sortView.charAt(0).toUpperCase() + props.sortView.slice(1)}</button>
+  <button className="ui button" onClick={props.handleSortButton}>
+    Sort By: {props.sortView.charAt(0).toUpperCase() + props.sortView.slice(1)}
+    </button>
     <table className="ui celled striped padded table">
       <tbody>
         <tr>
