@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AccountContainer from "./AccountContainer";
 import "../stylesheets/App.css";
 import TransactionsList from "./TransactionsList";
+import Transaction from "./Transaction";
 
 class App extends Component {
   //set needed values in state
@@ -26,19 +27,14 @@ class App extends Component {
   }
   
   //create a function to map over transactions & populate transaction list
-  populateTransactionList = () => {
+  getSingleTransaction = () => {
     const currentTransactions = this.state.transactionList
-    currentTransactions.map(trans => {
-
-    })
+    return currentTransactions.map(transaction =>  <Transaction key= {transaction.id}{...transaction}/>)
   }
 
 
-
-
-
   render() {
-    console.log(this.state)
+
     const { transactionList } = this.state
     return (
       <div className="ui raised segment">
@@ -48,6 +44,8 @@ class App extends Component {
         <AccountContainer />
         <TransactionsList 
           transactionList={transactionList} />
+        <Transaction
+          transaction={this.getSingleTransaction} />
       </div>
     );
   }
