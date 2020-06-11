@@ -79,7 +79,8 @@ class AccountContainer extends Component {
   }
 
   render() {
-    let transactionsDisplay = this.state.transations.filter(trans => trans.description.toLowerCase().includes(this.state.search.toLowerCase()))
+    /// filter by category or description 
+    let transactionsDisplay = this.state.transations.filter(trans => trans.description.toLowerCase().includes(this.state.search.toLowerCase()) || trans.category.toLowerCase().includes(this.state.search.toLowerCase()))
     return (
       <div>
         <Search search={this.state.search} handleOnChange={this.handleOnChange} button={this.state.button}/>
