@@ -46,37 +46,38 @@ class AccountContainer extends Component {
   }
 
   handleSearch = (e) => {
-    // console.log(e)
+    // console.log(e.target.value)
+
     this.setState({
       search: e.target.value
     })
+
+
   }
 
-  handleFilter = (e) => {
-    console.log(e)
-    if(e.target.value === 'description'){
-      this.setState({
-        description: ''
-      })
-    } else 
-    this.setState({
-      description: e.target.value.toLowerCase()
-    })
-  }
+  // handleFilter = (e) => {
+  //   // console.log(e)
+  //   if(e.target.value === this.props.description){
+  //     this.setState({
+  //       filter: ''
+  //     })
+  //   } else 
+  //   this.setState({
+  //     filter: e.target.value.toLowerCase()
+  //   })
+  // }
 
-  handleSearchAndFilter = () => {
-    this.handleSearch()
-    this.handleFilter()
-  }
+  // handleSearchAndFilter = (e) => {
+  //   this.handleSearch(e)
+  //   this.handleFilter(e)
+  // }
 
   render() {
     const searchTransactions = this.state.transactions.filter(transaction =>
-      transaction.description.toLowerCase().includes(this.state.search.toLowerCase())
-      ).filter(transaction => transaction.description.includes(this.state.filter))
-
+      transaction.description.toLowerCase().includes(this.state.search.toLowerCase()))
     return (
       <div>
-        <Search handleSearch={this.handleSearchAndFilter}/>
+        <Search handleSearch={this.handleSearch} handleFilter={this.handleFilter}/>
         <AddTransactionForm handleForm={this.handleForm}/>
         <TransactionsList transactions={this.state.transactions} searchTransactions={searchTransactions}/>
       </div>
