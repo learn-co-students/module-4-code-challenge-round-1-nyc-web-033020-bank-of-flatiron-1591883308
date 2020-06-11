@@ -9,7 +9,7 @@ class App extends Component {
       date:'',
       description:'',
       category:'',
-      amount:''
+      amount:0
     }
   }
 
@@ -20,11 +20,11 @@ class App extends Component {
     .then(transData => this.setState({transactions: transData}))
   };
 
-  handledateChange=(event)=>{
-    console.log(event.target.value)
+  handleChange=(event)=>{
+    this.setState({newTransaction: {[event.target.name]: event.target.value}})
   }
-  render() {
 
+  render() {
     return (
       <div className="ui raised segment">
         <div className="ui segment violet inverted">
