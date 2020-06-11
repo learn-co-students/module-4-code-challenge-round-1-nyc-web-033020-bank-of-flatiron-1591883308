@@ -31,7 +31,8 @@ class AccountContainer extends Component {
     }
   }
 
-  submitTransaction = () => {
+  submitTransaction = (event) => {
+    event.preventDefault()
     console.log('submitting...')
     let newTransaction = {
       date: this.state.date,
@@ -48,15 +49,12 @@ class AccountContainer extends Component {
     },
     body: JSON.stringify(newTransaction)
   })
+  
   .then(res => res.json())
   .then(data => this.setState({transactions: [...this.state.transactions, data]}))
 
-    })
-
-
-
-
-  }
+    
+}
   
   
   

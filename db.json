@@ -83,6 +83,13 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-06-11",
+      "description": "Pound of Beef",
+      "category": "Beefy",
+      "amount": "100",
+      "id": 13
     }
   ]
 }
