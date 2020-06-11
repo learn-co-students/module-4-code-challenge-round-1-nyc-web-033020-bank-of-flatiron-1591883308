@@ -16,7 +16,7 @@ class AddTransactionForm extends Component {
               step="0.01"
             />
           </div>
-          <button className="ui button" type="submit" onSubmit={()=>this.props.handleSubmit}>
+          <button className="ui button" type="submit" onSubmit={(event)=>this.props.handleSubmit(event)}>
             Add Transaction
           </button>
         </form>
