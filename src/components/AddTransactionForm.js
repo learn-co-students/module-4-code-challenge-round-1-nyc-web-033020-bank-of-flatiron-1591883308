@@ -5,7 +5,7 @@ class AddTransactionForm extends Component {
 
   render() {
 
-    const { date, description, category, amount, onChange, handleSubmit, handleDate, handleDesc, handleCat, handleAmount } = this.props
+    const { date, description, category, amount, onChange, handleSubmit, handleDate, handleDesc, handleCat, handleAmount, addToTransactions } = this.props
     // const { transForm, onChange } = this.props
 
 

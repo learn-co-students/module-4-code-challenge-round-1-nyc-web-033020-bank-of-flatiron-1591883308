@@ -100,9 +100,17 @@ class AccountContainer extends Component {
   //   })
   // }
 
+    addToTransactions = newFormTrans => {
+      this.setState({
+        transactions: [
+          ...this.state.transactions, newFormTrans
+        ]
+      })
+    }
+
   render() {
 
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div>
         <Search />
@@ -114,6 +122,7 @@ class AccountContainer extends Component {
         handleSubmit={this.handleSubmit}
         handleCat={this.handleCat} 
         handleAmount={this.handleAmount}
+        addToTransactions={this.addToTransactions}
         />
         <TransactionsList transactions={this.state.transactions} />
       </div>
