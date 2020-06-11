@@ -64,13 +64,6 @@
       "amount": 1000
     },
     {
-      "id": 10,
-      "date": "2019-12-16",
-      "description": "Tickets, Flatiron Multiplex Cinemas",
-      "category": "Entertainment",
-      "amount": -24
-    },
-    {
       "id": 11,
       "date": "2019-12-16",
       "description": "MTA Vending Machine: MetroCard",
@@ -90,20 +83,6 @@
       "category": "Clout",
       "amount": "500",
       "id": 13
-    },
-    {
-      "date": "1997-07-18",
-      "description": "Anotha one!",
-      "category": "Mo Money Mo Clout",
-      "amount": "1000",
-      "id": 14
-    },
-    {
-      "date": "2020-06-11",
-      "description": "Anotha one!",
-      "category": "Mo Money Mo Clout",
-      "amount": "1000",
-      "id": 15
     }
   ]
 }
