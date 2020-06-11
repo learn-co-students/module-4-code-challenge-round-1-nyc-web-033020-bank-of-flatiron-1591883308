@@ -29,25 +29,33 @@ class AccountContainer extends Component {
     }, ()=>console.log(this.state))
   }
 
+
   submitTransaction = (e) => {
     e.preventDefault()
-    fetch(API,{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        date: this.state.date,
-        description: this.state.description,
-        category: this.state.category,
-        amount: this.state.amount
+    if (this.state.date !== '' &&
+     this.state.description !== '' && 
+     this.state.category !== '' && 
+     this.state.amount !== '')
+     {
+      fetch(API,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          date: this.state.date,
+          description: this.state.description,
+          category: this.state.category,
+          amount: this.state.amount
+        })
       })
-    })
-    .then(resp => resp.json())
-    .then(newTransact => this.setState(prevState =>({
-      transactions: [...prevState.transactions, newTransact]
-    })))
+      .then(resp => resp.json())
+      .then(newTransact => this.setState(prevState =>({
+        transactions: [...prevState.transactions, newTransact]
+      })))
+    } else{alert("Please fill out the form completely!") }
+    
   }
 
   // Advanced Deliverables
