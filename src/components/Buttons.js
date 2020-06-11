@@ -5,11 +5,9 @@ export class Buttons extends Component {
         return (
             <div>
         <button onClick={this.props.handleOnChange} name='category'> Sort By Category</button>
-        <br></br>
         <button onClick={this.props.handleOnChange} name='description'> Sort By Description</button>
-        <br></br>
         <button onClick={this.props.handleOnChange} name='amount'> Sort By Amount</button>
-        <br></br>
+        <button onClick={this.props.handleOnChange} name='date'> Sort By Date</button>
             </div>
         )
     }

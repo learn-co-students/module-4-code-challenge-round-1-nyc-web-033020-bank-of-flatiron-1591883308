@@ -72,6 +72,8 @@ class AccountContainer extends Component {
       newArray = this.state.transations.sort((a,b)=> a.description > b.description ? 1 : -1 )
     } else if (event.target.name === 'amount'){
       newArray = this.state.transations.sort((a,b)=> a.amount < b.amount ? 1 : -1 )
+    } else if (event.target.name === 'date'){
+      newArray = this.state.transations.sort((a,b)=> a.date < b.date ? 1 : -1 )
     }
     this.setState({ transations: newArray })
   }
