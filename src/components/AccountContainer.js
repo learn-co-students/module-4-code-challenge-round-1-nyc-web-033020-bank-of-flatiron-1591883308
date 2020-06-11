@@ -9,7 +9,8 @@ class AccountContainer extends Component {
 
   state = {
     transactions: [],
-    search: ''
+    search: '',
+    sortToggle: '',
   } 
 
   componentDidMount(){
@@ -22,27 +23,47 @@ class AccountContainer extends Component {
     this.setState({search: inputValue})
   };
 
+  toggleSort = (e) => {
+    this.setState({sortToggle: e.target.value})
+  };
+
+  handleSort = (transactions, sortType) => {
+    if(sortType === 'category'){
+      return transactions.sort((t1, t2) => (t1.category - t2.category))
+    } else if (sortType === 'description'){
+      return transactions.sort((t1, t2) => (t1.description - t2.description))
+    }
+  };
+
   addTransaction = (transObj) => {
     const newArray = [...this.state.transactions]
     newArray.push(transObj)
     this.setState({ transactions: newArray })
   };
 
-  render() {
-    console.log(this.state.search)
 
-    const { transactions, search } = this.state 
+  render() {
+    console.log(this.state.sortToggle)
+
+    const { transactions, search, sortToggle } = this.state 
 
     const filteredTransactions = transactions.filter(
       trans => trans.description.toLowerCase()
         .includes(search.toLowerCase())
     )
+      
+
+    // const sortedTransactions = filteredTransactions
 
     return (
       <div>
         <Search search={search} handleSearch={this.handleSearch}/>
         <AddTransactionForm addTransaction={this.addTransaction}/>
-        <TransactionsList transactions={filteredTransactions}/>
+        <TransactionsList 
+          transactions={filteredTransactions} 
+          sortToggle={sortToggle}
+          toggleSort={this.toggleSort}
+        />
       </div>
     );
   }
