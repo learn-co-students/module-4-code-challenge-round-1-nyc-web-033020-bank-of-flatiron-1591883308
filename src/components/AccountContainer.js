@@ -16,13 +16,8 @@ class AccountContainer extends Component {
     .then(transactions => this.setState({transactions}))
   }
 
-  searchHandler = (e) => {
-    this.setState({searchTerm: e.target.value})
+  searchHandler = (e) => this.setState({searchTerm: e.target.value})
 
-    let filteredTransactions = this.state.transactions.filter(trans=> trans.description.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
-
-    
-  }
 
   addNew = (newTrans) => {
     this.setState({transactions: [...this.state.transactions, newTrans]})
@@ -33,7 +28,7 @@ class AccountContainer extends Component {
       <div>
         <Search  searchHandler={this.searchHandler} searchTerm={this.state.searchTerm}/>
         <AddTransactionForm addNew={this.addNew}/>
-        <TransactionsList transactions={this.state.transactions}/>
+        <TransactionsList transactions={this.state.transactions} searchTerm={this.state.searchTerm}/>
       </div>
     );
   }
