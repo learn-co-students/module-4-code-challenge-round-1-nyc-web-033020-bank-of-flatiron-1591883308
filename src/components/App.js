@@ -6,7 +6,8 @@ const BASE_API = 'http://localhost:6001/transactions'
 class App extends Component {
   state = { 
     transactions: [],
-    searchTerm: ''
+    searchTerm: '',
+    // move addTransactionForm States here to reset the form after submission
   }
 
   componentDidMount() {
@@ -35,7 +36,7 @@ class App extends Component {
       this.setState({
         transactions: [...this.state.transactions, newTransaction]
       })
-    } )
+    })
   }
 
   handleSearch = (e) => {

@@ -5,13 +5,14 @@ class AddTransactionForm extends Component {
     date: '',
     description: '',
     category: '',
-    amount: '',
+    amount: ''
   }
 
   handleFormChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
+    
   }
   
  
