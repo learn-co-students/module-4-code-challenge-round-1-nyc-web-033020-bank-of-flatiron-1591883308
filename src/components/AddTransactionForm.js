@@ -29,6 +29,13 @@ class AddTransactionForm extends Component {
     fetch(API, post)
     .then(res => res.json())
     .then(data => this.props.onSubmit(data))
+    this.setState({
+      date: '',
+      description: '',
+      category: '',
+      amount: null
+  
+    })
   }
 
   submitHandler = e => {
