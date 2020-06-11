@@ -90,6 +90,27 @@
       "category": "Sports",
       "amount": "200",
       "id": 13
+    },
+    {
+      "date": "2020-06-11",
+      "description": "Testing",
+      "category": "Form",
+      "amount": "2",
+      "id": 14
+    },
+    {
+      "date": "2020-06-12",
+      "description": "uh",
+      "category": "oh",
+      "amount": "10000",
+      "id": 15
+    },
+    {
+      "date": "",
+      "description": "",
+      "category": "",
+      "amount": "",
+      "id": 16
     }
   ]
 }

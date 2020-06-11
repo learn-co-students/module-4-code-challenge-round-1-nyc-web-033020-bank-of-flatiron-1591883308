@@ -6,6 +6,8 @@ import AddTransactionForm from "./AddTransactionForm";
 class AccountContainer extends Component {
   state = {
     transactions: [],
+    search: '',
+    filter: ''
   }
 
   componentDidMount(){
@@ -20,6 +22,7 @@ class AccountContainer extends Component {
 
 
   handleForm = (e) => {
+    // console.log(e)
     const data = {
       "date": e.target.date.value,
       "description": e.target.description.value,
@@ -42,13 +45,40 @@ class AccountContainer extends Component {
       })
   }
 
+  handleSearch = (e) => {
+    // console.log(e)
+    this.setState({
+      search: e.target.value
+    })
+  }
+
+  handleFilter = (e) => {
+    console.log(e)
+    if(e.target.value === 'description'){
+      this.setState({
+        description: ''
+      })
+    } else 
+    this.setState({
+      description: e.target.value.toLowerCase()
+    })
+  }
+
+  handleSearchAndFilter = () => {
+    this.handleSearch()
+    this.handleFilter()
+  }
 
   render() {
+    const searchTransactions = this.state.transactions.filter(transaction =>
+      transaction.description.toLowerCase().includes(this.state.search.toLowerCase())
+      ).filter(transaction => transaction.description.includes(this.state.filter))
+
     return (
       <div>
-        <Search />
+        <Search handleSearch={this.handleSearchAndFilter}/>
         <AddTransactionForm handleForm={this.handleForm}/>
-        <TransactionsList transactions={this.state.transactions}/>
+        <TransactionsList transactions={this.state.transactions} searchTransactions={searchTransactions}/>
       </div>
     );
   }
