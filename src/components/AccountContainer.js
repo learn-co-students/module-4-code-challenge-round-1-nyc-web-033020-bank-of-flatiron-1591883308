@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
+import Buttons from './Buttons'
 
 
 const url = 'http://localhost:6001/transactions'
@@ -63,12 +64,22 @@ class AccountContainer extends Component {
    }).then(res => res.json()).then(didDelete => console.log(didDelete))
   }
 
+  handleButton = (event) => {
+    console.log(event.target.name)
+    if (event.target.name === 'category'){
+       this.state.transations.sort((a,b)=> a.category > b.category, 1, -1 )
+    } else if (event.target.name === 'description'){
+      this.state.transations.sort((a,b)=> a.description > b.description, 1, -1 )
+    }
+  }
+
   render() {
     let transactionsDisplay = this.state.transations.filter(trans => trans.description.toLowerCase().includes(this.state.search.toLowerCase()))
     return (
       <div>
-        <Search search={this.state.search} handleOnChange={this.handleOnChange}/>
+        <Search search={this.state.search} handleOnChange={this.handleOnChange} button={this.state.button}/>
         <AddTransactionForm handleSubmit={this.handleSubmit}  handleOnChange={this.handleOnChange} date={this.state.date} description={this.state.description} category={this.state.category} amount={this.state.amount}/>
+        <Buttons handleOnChange={this.handleButton} button={this.state.button}/> 
         <TransactionsList transactionsDisplay={transactionsDisplay} handleDelete={this.handleDelete}/>
       </div>
     );
