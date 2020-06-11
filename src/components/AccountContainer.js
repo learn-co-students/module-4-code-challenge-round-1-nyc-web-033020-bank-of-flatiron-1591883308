@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TransactionsList from "./TransactionsList";
 import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
+import Sort from "./sort";
 
 const baseUrl = "http://localhost:6001";
 const parseData = (res) => res.json();
@@ -14,6 +15,7 @@ class AccountContainer extends Component {
   state = {
     transactions: [],
     search: "",
+    sort: "",
   };
 
   componentDidMount() {
@@ -39,11 +41,28 @@ class AccountContainer extends Component {
     this.setState({ search: value });
   };
 
+  handleSort = (event) => {
+    const value = event.target.value;
+    const transArr = [...this.state.transactions];
+    if (value === "cat") {
+      transArr.sort((a, b) =>
+        a.category.toLowerCase() > b.category.toLowerCase() ? 1 : -1
+      );
+    } else if (value === "desc") {
+      transArr.sort((a, b) =>
+        a.description.toLowerCase() > b.description.toLowerCase() ? 1 : -1
+      );
+    }
+
+    this.setState({ sort: value, transactions: transArr });
+  };
+
   render() {
     // console.log("transactions: ", this.state.transactions);
     return (
       <div>
         <Search search={this.state.search} handleSearch={this.handleSearch} />
+        <Sort sort={this.state.sort} handleSort={this.handleSort} />
         <AddTransactionForm handleSubmit={this.handleSubmit} />
         <TransactionsList
           transactions={this.state.transactions.filter((t) =>
