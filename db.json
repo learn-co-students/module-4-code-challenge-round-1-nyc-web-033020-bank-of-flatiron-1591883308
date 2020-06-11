@@ -83,6 +83,20 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-06-11",
+      "description": "hamburger",
+      "category": "Food",
+      "amount": "-15",
+      "id": 13
+    },
+    {
+      "date": "2020-06-11",
+      "description": "Code challenge bonus",
+      "category": "Income",
+      "amount": "500",
+      "id": 14
     }
   ]
 }

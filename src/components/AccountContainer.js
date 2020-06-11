@@ -10,11 +10,7 @@ class AccountContainer extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:6001/transactions')
-      .then(resp => resp.json())
-      .then(transactions => {
-        this.setState({ transactions })
-      })
+    this.renderTransactionsList()
   }
 
   postTransaction = transaction => {
@@ -26,10 +22,24 @@ class AccountContainer extends Component {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({ transaction })
+      body: JSON.stringify({ 
+        date: transaction.date,
+        description: transaction.description,
+        category: transaction.category,
+        amount: transaction.amount
+      })
     })
       .then(resp => resp.json())
       .then(transaction => console.log(transaction))
+      .then(() => this.renderTransactionsList())
+  }
+
+  renderTransactionsList = () => {
+    fetch('http://localhost:6001/transactions')
+      .then(resp => resp.json())
+      .then(transactions => {
+        this.setState({ transactions })
+      })
   }
 
   render() {
