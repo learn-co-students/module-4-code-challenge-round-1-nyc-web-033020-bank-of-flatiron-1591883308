@@ -5,11 +5,14 @@ import AddTransactionForm from "./AddTransactionForm";
 
 class AccountContainer extends Component {
   render() {
+
+    const { transactions } = this.props
+    
     return (
       <div>
         <Search />
         <AddTransactionForm />
-        <TransactionsList />
+        <TransactionsList transactions={transactions} />
       </div>
     );
   }
