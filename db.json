@@ -83,6 +83,27 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-06-11",
+      "description": "Big Hat",
+      "category": "Shopping",
+      "amount": "100",
+      "id": 13
+    },
+    {
+      "date": "2020-06-12",
+      "description": "Bigger Hat",
+      "category": "Important Business",
+      "amount": "150",
+      "id": 14
+    },
+    {
+      "date": "2020-06-12",
+      "description": "Even Bigger Hat",
+      "category": "Dino Hunting Gear",
+      "amount": "200",
+      "id": 15
     }
   ]
 }

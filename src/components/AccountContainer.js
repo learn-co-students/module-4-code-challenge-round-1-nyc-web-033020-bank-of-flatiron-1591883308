@@ -30,7 +30,23 @@ class AccountContainer extends Component {
 
   submitTransaction = (e) => {
     e.preventDefault()
-    console.log(e.target)
+    fetch(API,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        date: this.state.date,
+        description: this.state.description,
+        category: this.state.category,
+        amount: this.state.amount
+      })
+    })
+    .then(resp => resp.json())
+    .then(newTransact => this.setState(prevState =>({
+      transactions: [...prevState.transactions, newTransact]
+    })))
   }
 
   render() {
