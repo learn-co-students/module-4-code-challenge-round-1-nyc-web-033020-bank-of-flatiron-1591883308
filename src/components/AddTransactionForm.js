@@ -1,6 +1,23 @@
 import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
+  
+  state = {
+	date: new Date(),
+	description: null,
+	category: null,
+	amount: 0
+  }
+
+  handleChange = e => {
+
+  }
+
+  handleSubmit = e => {
+	e.preventDefault();
+	
+  }
+
   render() {
     return (
       <div className="ui segment">
