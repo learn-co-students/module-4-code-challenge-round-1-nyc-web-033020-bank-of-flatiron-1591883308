@@ -9,7 +9,27 @@ class AccountContainer extends Component {
 
   state = {
     transactions: [],
-    searchTerm: 'Searching!'
+    searchTerm: ''
+  }
+
+  componentDidMount(){
+    fetch(baseUrl)
+    .then(resp => resp.json())
+    .then(transactions => {
+      this.setState({
+        transactions: transactions
+      })
+    })
+  }
+
+  componentDidUpdate(){
+    fetch(baseUrl)
+    .then(resp => resp.json())
+    .then(transactions => {
+      this.setState({
+        transactions: transactions
+      })
+    })
   }
 
   addTransaction = (transactionObj) => {
@@ -30,13 +50,17 @@ class AccountContainer extends Component {
     })
   }
 
-  componentDidMount(){
-    fetch(baseUrl)
-    .then(resp => resp.json())
-    .then(transactions => {
+  deleteTransaction = (transactionId) => {
+    fetch(`${baseUrl}/${transactionId}`,{
+      method: "DELETE"
+    }).then(resp => resp.json())
+    .then(deletedTransaction => {
+      let updatedTransactionsList = this.state.transactions.filter(transaction => {
+        return transaction.id !== transactionId
+      }) 
       this.setState({
-        transactions: transactions
-      })
+        transaction: updatedTransactionsList
+      }) 
     })
   }
 
@@ -46,8 +70,15 @@ class AccountContainer extends Component {
     })
   }
 
+  filteredTransactions = () => {
+    let filteredTransactions = this.state.transactions.filter(transaction => {
+      return transaction.description.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    })
+    return filteredTransactions
+  }
+
   render() {
-    console.log(this.state.searchTerm)
+
     return (
       <div>
         <Search 
@@ -59,7 +90,8 @@ class AccountContainer extends Component {
           addTransaction={this.addTransaction}
         />
         <TransactionsList 
-          transactions={this.state.transactions} 
+          transactions={this.filteredTransactions()} 
+          deleteTransaction={this.deleteTransaction}
         />
       </div>
     );
