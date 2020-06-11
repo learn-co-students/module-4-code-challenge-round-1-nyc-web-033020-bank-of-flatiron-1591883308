@@ -67,11 +67,9 @@ class AccountContainer extends Component {
   handleButton = (event) => {
     let newArray = []
     if (event.target.name === 'category'){
-      console.log(event.target.name)
       newArray = this.state.transations.sort((a,b)=> a.category > b.category ? 1 : -1 )
     } else if (event.target.name === 'description'){
-      console.log(event.target.name)
-      newArray =this.state.transations.sort((a,b)=> a.description > b.description ? 1 : -1 )
+      newArray = this.state.transations.sort((a,b)=> a.description > b.description ? 1 : -1 )
     }
     this.setState({ transations: newArray })
   }
