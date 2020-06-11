@@ -26,7 +26,7 @@ class AccountContainer extends Component {
   handleChange = (e) =>{
     this.setState({
       [e.target.name]: e.target.value
-    }, ()=>console.log(this.state))
+    })
   }
 
 
@@ -63,15 +63,12 @@ class AccountContainer extends Component {
     switch(this.state.sortView){
       case 'date':
         this.setState({sortView:'description'})
-        console.log(this.state.sortView)
         break;
       case 'description':
         this.setState({sortView:'category'})
-        console.log(this.state.sortView)
         break;
       case 'category':
         this.setState({sortView:'date'})
-        console.log(this.state.sortView)
         break;
       default:
         this.setState({sortView:'date'})
