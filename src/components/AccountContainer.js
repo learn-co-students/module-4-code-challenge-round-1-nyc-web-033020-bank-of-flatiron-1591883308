@@ -27,10 +27,31 @@ class AccountContainer extends Component {
 
   handlerAddNewTransaction = (e) => {
     e.preventDefault()
-    console.log('adding: ', e.target.date.value)
-    console.log('adding: ', e.target.description.value)
-    console.log('adding: ', e.target.category.value)
-    console.log('adding: ', e.target.amount.value)
+    const newTransaction = {
+      date: e.target.date.value,
+      description: e.target.description.value,
+      category: e.target.category.value,
+      amount: e.target.amount.value
+    }
+
+    fetch(`http://localhost:6001/transactions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newTransaction),
+    })
+    .then(resp => resp.json())
+    .then(data => {
+      this.setState({
+        allTransactions: [...this.state.allTransactions, data]
+      })
+    })
+
+    e.target.date.value = ''
+    e.target.description.value = ''
+    e.target.category.value = ''
+    e.target.amount.value = ''
   }
 
   render() {
