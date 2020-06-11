@@ -7,6 +7,7 @@ const Transaction = (props) => {
       <td>{props.description}</td>
       <td>{props.category}</td>
       <td>{props.amount}</td>
+      <td><button style={{verticalAlign: "middle"}} onClick={() => props.onClick(props.id)}>DELETE</button></td>
     </tr>
   );
 };

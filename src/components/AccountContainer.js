@@ -38,12 +38,26 @@ class AccountContainer extends Component {
     return transactions.filter(transaction => transaction.description.includes(searchInput))
   }
 
+  deleteTransaction = (id) => {
+    const deleteT = {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        accept: 'application/json'
+      }
+    }
+    fetch(`${API}/${id}`, deleteT)
+    this.renderTransactions()
+  }
+
+
+
   render() {
     return (
       <div>
         <Search onChange={this.searchTransactions}/>
         <AddTransactionForm onSubmit={this.renderTransactions} />
-        <TransactionsList transactions={this.renderSearchedTransactions()}/>
+        <TransactionsList transactions={this.renderSearchedTransactions()} onClick={this.deleteTransaction}/>
       </div>
     );
   }
