@@ -2,8 +2,8 @@ import React from "react";
 import Transaction from "./Transaction";
 
 const TransactionsList = (props) => {
-  const {transactions, searchTerm} = props
-  console.log('hiiii!!',props )
+  const {transactions, searchTerm, deleteTrans} = props
+  // console.log('hiiii!!',props )
 
   let filteredTransactions = transactions.filter(trans=> trans.description.toLowerCase().includes(searchTerm.toLowerCase()))
     let wantedTransactions = []
@@ -26,7 +26,7 @@ const TransactionsList = (props) => {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
-        {wantedTransactions.map(transaction=> <Transaction {...transaction} key={transaction.id}/>)}
+        {wantedTransactions.map(transaction=> <Transaction {...transaction} deleteTrans={deleteTrans} key={transaction.id}/>)}
       </tbody>
     </table>
   );

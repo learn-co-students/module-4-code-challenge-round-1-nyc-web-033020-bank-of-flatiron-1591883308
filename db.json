@@ -1,20 +1,6 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "date": "2019-12-01",
-      "description": "Paycheck from Bob's Burgers",
-      "category": "Income",
-      "amount": 1000
-    },
-    {
-      "id": 2,
-      "date": "2019-12-01",
-      "description": "South by Southwest Quinoa Bowl at Fresh & Co",
-      "category": "Food",
-      "amount": -10.55
-    },
-    {
       "id": 3,
       "date": "2019-12-02",
       "description": "South by Southwest Quinoa Bowl at Fresh & Co",
@@ -92,13 +78,6 @@
       "id": 13
     },
     {
-      "date": "",
-      "description": "",
-      "category": "",
-      "amount": 0,
-      "id": 14
-    },
-    {
       "date": "2020-06-09",
       "description": "Burn your tongue",
       "category": "hello",
@@ -118,6 +97,13 @@
       "category": "hiking",
       "amount": "20",
       "id": 17
+    },
+    {
+      "date": "2020-06-06",
+      "description": "sweet",
+      "category": "hello",
+      "amount": "110",
+      "id": 18
     }
   ]
 }

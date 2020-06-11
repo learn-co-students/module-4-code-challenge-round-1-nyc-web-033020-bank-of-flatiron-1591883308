@@ -13,7 +13,7 @@ class AddTransactionForm extends Component {
   submitHandler = e => {
     e.preventDefault()
     let newTrans = this.state
-    console.log(newTrans)
+
     fetch('http://localhost:6001/transactions',{
       method: "POST",
       headers: {"Content-Type": "application/json",
@@ -28,7 +28,7 @@ class AddTransactionForm extends Component {
   }
 
   render() {
-    console.log("form!!",this.props)
+    console.log(this.props)
    
     return (
       <div className="ui segment">
@@ -42,6 +42,14 @@ class AddTransactionForm extends Component {
           <button className="ui button" type="submit">
             Add Transaction
           </button>
+          {/* <label> 
+          Category
+          <input type="radio" value="category" name="trans" onClick={(e)=> this.props.sortHandler(e.target.value)}/>
+          </label>
+          <label> 
+          Description
+          <input type="radio" value="description" name="trans" onClcik={(e)=>this.props.sortHandler(e.target.value)}/>
+          </label> */}
         </form>
       </div>
     );
