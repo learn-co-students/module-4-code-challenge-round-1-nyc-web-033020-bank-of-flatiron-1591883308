@@ -20,7 +20,7 @@ class AccountContainer extends Component {
   }
 
   addNewTransaction = (transaction) => 
-    this.setState({transactions: [this.state.transactions, transaction]})
+    this.setState({transactions: [...this.state.transactions, transaction]})
 
   render() {
     console.log(this.state.transactions)
@@ -36,3 +36,5 @@ class AccountContainer extends Component {
 }
 
 export default AccountContainer;
+
+

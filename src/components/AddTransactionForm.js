@@ -1,41 +1,33 @@
 import React, { Component } from "react";
 
-
+const state = {date: "", description: "", category: "", amount: ""}
 class AddTransactionForm extends Component {
-  state = {
-    date: "",
-    description: "",
-    category: "",
-    amount: ''
-  }
+  state = state
 
   handleOnchange = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  // amountToInteger = (amount) => {
-  //   amount
-  // }
+
   
 
   handleSubmit = (e) => {
-    e.preventDefault()
-    const newTransaction = {date: this.state.date, description: this.state.description, category: this.state.category, amount: this.state.amount}
+    e.preventDefault();
     fetch("http://localhost:6001/transactions", {
       method: 'POST',
       headers: {
-        "Accept": 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+         Accept: 'application/json'
       },
-      body: JSON.stringify(newTransaction)
+      body: JSON.stringify(this.state)
     })
       .then(res => res.json())
-      .then(transaction => console.log(transaction))
-        // this.props.addNewTransaction(transaction)
-      }
-  }
+      .then(transaction => {this.props.addNewTransaction(transaction)
+      })
+    }
 
 
+      
 
   render() {
     console.log(this.state.amount, this.state.description, this.state.date, this.state.category)

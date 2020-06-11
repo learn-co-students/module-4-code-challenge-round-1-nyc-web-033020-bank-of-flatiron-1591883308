@@ -85,74 +85,11 @@
       "amount": -975
     },
     {
-      "date": "2020-06-25",
-      "description": "I win ",
-      "category": "Winning",
-      "amount": "0.13",
+      "date": "2020-06-12",
+      "description": "Got the post",
+      "category": "Post",
+      "amount": "-0.04",
       "id": 13
-    },
-    {
-      "date": "2020-06-04",
-      "description": "oh",
-      "category": "fsdfsdf",
-      "amount": "-0.03",
-      "id": 14
-    },
-    {
-      "date": "2020-06-05",
-      "description": "d",
-      "category": "d",
-      "amount": "0.03",
-      "id": 15
-    },
-    {
-      "date": "2020-06-04",
-      "description": "oh",
-      "category": "ew",
-      "amount": "0.03",
-      "id": 16
-    },
-    {
-      "date": "2020-06-05",
-      "description": "sdfsdf",
-      "category": "hey",
-      "amount": "-0.03",
-      "id": 17
-    },
-    {
-      "date": "2020-06-05",
-      "description": "fsdf",
-      "category": "fsfd",
-      "amount": "",
-      "id": 18
-    },
-    {
-      "date": "2020-06-05",
-      "description": "ffdsf",
-      "category": "dfsf",
-      "amount": "",
-      "id": 19
-    },
-    {
-      "date": "2020-06-04",
-      "description": "fsdf",
-      "category": "fsdf",
-      "amount": "0.03",
-      "id": 20
-    },
-    {
-      "date": "2020-06-04",
-      "description": "fdcs",
-      "category": "sdfsd",
-      "amount": "-0.03",
-      "id": 21
-    },
-    {
-      "date": "2020-06-05",
-      "description": "dsdsd",
-      "category": "fsdfsd",
-      "amount": "-0.03",
-      "id": 22
     }
   ]
 }
