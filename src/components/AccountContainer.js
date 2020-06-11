@@ -25,8 +25,8 @@ class AccountContainer extends Component {
     return (
       <div>
         <Search />
-        <AddTransactionForm />
-        <TransactionsList transactions={this.state.transactions} />
+        <AddTransactionForm onSubmit={this.renderTransactions} />
+        <TransactionsList transactions={this.state.transactions}/>
       </div>
     );
   }

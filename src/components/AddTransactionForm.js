@@ -18,15 +18,23 @@ class AddTransactionForm extends Component {
   }
   
   postTransaction = () => {
-    fetch()
+    const post = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        accept: 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    }
+    fetch(API, post)
+    .then(res => res.json())
+    .then(data => this.props.onSubmit(data))
   }
 
   submitHandler = e => {
     e.preventDefault()
     // e.persist() /* hold in case you need */
-
-
-
+    this.postTransaction()
   }
 
   render() {
