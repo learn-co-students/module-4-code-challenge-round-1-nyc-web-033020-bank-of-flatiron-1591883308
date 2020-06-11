@@ -83,6 +83,20 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2020-06-06",
+      "description": "Uber Ride",
+      "category": "Transportation",
+      "amount": "20",
+      "id": 13
+    },
+    {
+      "date": "2020-06-06",
+      "description": "Cocktails",
+      "category": "Food",
+      "amount": "65",
+      "id": 14
     }
   ]
 }

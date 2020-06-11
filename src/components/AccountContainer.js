@@ -9,17 +9,24 @@ class AccountContainer extends Component {
 
   state = {
     transactions: [],
-    transactionInfo: {
-      date: "2020-06-10",
-      description: 'testing',
-      category: 'Food',
-      amount: '999'
-    }
+    searchTerm: 'Searching!'
   }
 
-  handleForm = (transactionInfo) => {
-    this.setState({
-     
+  addTransaction = (transactionObj) => {
+    fetch(baseUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      }, 
+      body: JSON.stringify(transactionObj)
+    })
+    .then(resp => resp.json())
+    .then(newTransaction => {
+      let updatedTransactionsList = [...this.state.transactions, newTransaction]
+      this.setState({
+        transactions: updatedTransactionsList
+      })
     })
   }
 
@@ -33,13 +40,23 @@ class AccountContainer extends Component {
     })
   }
 
+  handleSearchTerm = (searchTerm) => {
+    this.setState({
+      searchTerm: searchTerm
+    })
+  }
+
   render() {
+    console.log(this.state.searchTerm)
     return (
       <div>
-        <Search />
+        <Search 
+          searchTerm={this.state.searchTerm} 
+          handleSearch={this.handleSearchTerm}
+        />
         <AddTransactionForm 
           transactionInfo={this.state.transactionInfo} 
-          handleForm={this.handleForm}
+          addTransaction={this.addTransaction}
         />
         <TransactionsList 
           transactions={this.state.transactions} 
