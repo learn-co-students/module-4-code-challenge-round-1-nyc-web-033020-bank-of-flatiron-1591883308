@@ -60,13 +60,30 @@ class AccountContainer extends Component {
     return txns
   }
 
+  handleDelete = (txn) => {
+    fetch(API + '/' + txn.id, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+    }).then(() => {
+      this.setState(prevState => {
+        let txns = [...prevState.txns]
+        const i = txns.indexOf(txn)
+        txns.splice(i, 1)
+        return {txns: txns}
+      })
+    })
+  }
+
   render() {
     return (
       <div>
         <Search searchValue={this.state.search} handleChange={this.handleSearchChange} />
         <AddTransactionForm submitForm={this.submitForm}/>
         <Sort submitSort={this.submitSort}/>
-        <TransactionsList txns={this.renderTransactions()}/>
+        <TransactionsList txns={this.renderTransactions()} handleDelete={this.handleDelete}/>
       </div>
     );
   }
