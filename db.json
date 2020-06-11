@@ -118,6 +118,20 @@
       "category": "Income",
       "amount": "15000",
       "id": 17
+    },
+    {
+      "date": "2020-06-11",
+      "description": "Sold another car",
+      "category": "Inc",
+      "amount": "",
+      "id": 18
+    },
+    {
+      "date": "2020-06-11",
+      "description": "Beer",
+      "category": "Essentials",
+      "amount": "30",
+      "id": 19
     }
   ]
 }

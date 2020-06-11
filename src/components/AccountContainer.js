@@ -59,13 +59,26 @@ class AccountContainer extends Component {
     return filteredTransactions
   }
 
+  // For advanced deliverable... not working yet
+  // sortedTransactions = transactions => {
+  //   return [...transactions.category].sort((transA, transB) => transA.localeCompare(transB))
+  // }
+
   render() {
     // console.log(this.state.search)
     return (
       <div>
         <Search search={this.updateSearchState} />
         <AddTransactionForm addTransaction={this.postTransaction} />
-        <TransactionsList transactions={this.filterTransactions()} />
+        <TransactionsList 
+          transactions={this.filterTransactions()}
+
+          //advanced diverable... not working
+          // transactions={this.sortedTransactions(this.filterTransactions())}
+        />
+
+        {/* Advanced Deliverable */}
+        {/* <button style={{marginTop: "3rem"}} onClick={this.sortedTransactions}>Sort categories A-Z</button> */}
       </div>
     );
   }
