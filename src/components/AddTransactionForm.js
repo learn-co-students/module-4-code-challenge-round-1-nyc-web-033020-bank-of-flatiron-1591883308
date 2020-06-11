@@ -4,7 +4,7 @@ class AddTransactionForm extends Component {
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form className="ui form" onSubmit={this.props.handlerAddNewTransaction}>
           <div className="inline fields">
             <input type="date" name="date" />
             <input type="text" name="description" placeholder="Description" />
@@ -16,9 +16,7 @@ class AddTransactionForm extends Component {
               step="0.01"
             />
           </div>
-          <button className="ui button" type="submit">
-            Add Transaction
-          </button>
+          <button className="ui button" type="submit">Add Transaction</button>
         </form>
       </div>
     );
