@@ -9,11 +9,12 @@ class AccountContainer extends Component {
 
   state = {
     trans: [], 
-      id: null,
-      date: '',
-      description: '',
-      category: '',
-      amount: ''
+    searchTerm: '',
+    id: null,
+    date: '',
+    description: '',
+    category: '',
+    amount: ''
   }
 
   componentDidMount() {
@@ -23,6 +24,14 @@ class AccountContainer extends Component {
       this.setState({ trans: transData })
     })
   }
+
+  handleSearch = event => {
+    this.setState({ searchTerm: event.target.value })
+  }
+
+  // handleSearch = event => {
+  //   this.setState({ [event.target.name]: event.target.value })
+  // }
 
   addToTransactions = newTran => {
     this.setState({ trans: [
@@ -58,10 +67,16 @@ class AccountContainer extends Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
+
+    const searchTrans = this.state.trans.filter(tran => tran.description.includes(this.state.searchTerm))
+    // let searchTrans = this.state.searchTerm.filter(search => tran.)
+
+
     return (
       <div>
-        <Search />
+        <Search searchTerm={this.state.searchTerm} handleSearch={this.handleSearch}/>
+
         {/* <AddTransactionForm tranInForm={this.state.tranInForm} handleChange={this.handleChange} /> */}
         <AddTransactionForm 
         id={this.state.id} 
@@ -72,7 +87,8 @@ class AccountContainer extends Component {
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit} />
 
-        <TransactionsList trans={this.state.trans} />
+        {/* <TransactionsList trans={this.state.trans} /> */}
+        <TransactionsList trans={searchTrans} />
       </div>
     );
   }
