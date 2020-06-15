@@ -69,7 +69,9 @@ class AccountContainer extends Component {
   render() {
     // console.log(this.state)
 
-    const searchTrans = this.state.trans.filter(tran => tran.description.includes(this.state.searchTerm))
+    const searchTrans = this.state.trans.filter(tran => tran.description.toLowerCase().includes(this.state.searchTerm))
+    console.log(searchTrans)
+
     // let searchTrans = this.state.searchTerm.filter(search => tran.)
 
 

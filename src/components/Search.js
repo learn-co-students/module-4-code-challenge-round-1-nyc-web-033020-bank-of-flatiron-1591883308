@@ -5,7 +5,7 @@ const Search = (props) => {
     <div className="ui large fluid icon input">
       <input
         type="text"
-        value={props.searchTerm}
+        // value={props.searchTerm}
         name='search'
         placeholder={"Search your Recent Transactions"}
         onChange={props.handleSearch}
