@@ -39,7 +39,6 @@ class AccountContainer extends Component {
     event.persist()
 
     const newTransaction = {
-      id: this.state.id,
       date: this.state.date,
       description: this.state.description,
       category: this.state.category,
@@ -52,7 +51,7 @@ class AccountContainer extends Component {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify(...this.state.trans, newTransaction)
+      body: JSON.stringify(newTransaction)
     })
       .then(res => res.json())
       .then(newTran => this.addToTransactions(newTran))
